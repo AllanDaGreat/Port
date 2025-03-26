@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dagreat | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        section { height: 100vh; display: flex; align-items: center; justify-content: center; }
+        .slideshow-container { width: 100vw; height: 100vh; overflow: hidden; position: relative; opacity: 0; transition: opacity 0.5s ease-in-out; }
+        .slides { display: flex; width: 400%; height: 100%; transition: transform 1s ease-in-out; }
+        .project-slide { flex: 0 0 100vw; height: 100vh; text-align: center; font-size: 3rem; font-weight: bold; color: white; display: flex; align-items: center; justify-content: center; }
+        .project-title { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 5rem; font-weight: bold; color: white; opacity: 1; transition: opacity 0.5s ease-in-out; }
+    </style>
+</head>
+<body class="bg-orange-200 text-cream">
+    <div class="absolute top-6 left-6 text-lg font-semibold text-white">Dagreat</div>
+    
+    <section id="home" class="text-center flex flex-col justify-center">
+        <div class="h-1/2 flex justify-center items-center">
+            <h1 class="text-6xl md:text-8xl font-bold text-cream">TRIAL &<br>ERROR</h1>
+        </div>
+    </section>
+    
+    <section id="about" class="bg-orange-300 text-gray-800 flex items-center justify-between w-full h-screen p-10">
+        <div class="w-2/5 h-[500px] bg-white shadow-lg overflow-hidden">
+            <img src="profile.jpg" alt="Profile Picture" class="w-full h-full object-cover">
+        </div>
+        <div class="w-3/5 text-left px-10">
+            <h2 class="text-5xl font-bold text-red-600">ABOUT ME</h2>
+            <p class="mt-4 text-lg leading-relaxed">Hi, I'm Dagreat, always eager to learn and know of upcoming technology.Intersted to know how to make 3D websites with built in AI.</p>
+        </div>
+    </section>
+    
+    <section id="projects" class="bg-orange-700 flex justify-center items-center text-center p-10 h-screen relative">
+        <div id="project-title" class="project-title">PROJECTS</div>
+        <div id="slideshow" class="slideshow-container bg-orange-700">
+            <div class="slides">
+                <div class="project-slide bg-orange-600">Upcoming Project</div>
+                <div class="project-slide bg-orange-500">Stay Tuned</div>
+                <div class="project-slide bg-orange-600">Exciting Work Ahead</div>
+                <div class="project-slide bg-orange-500">More Projects Soon</div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="skills" class="bg-red-600 text-cream p-10 flex justify-between items-center">
+        <div class="w-1/2 text-center">
+            <h2 class="text-5xl font-bold">SKILLS</h2>
+            <div class="flex justify-center mt-6 space-x-4">
+                <img src="html.png" class="w-16 h-16">
+                <img src="c.png" class="w-16 h-16">
+                <img src="c++.png" class="w-16 h-16">
+                <img src="python.png" class="w-16 h-16">
+            </div>
+            <p class="mt-6 text-lg">Eager to learn and always looking to update my skillset.</p>
+        </div>
+        <div class="w-1/2 text-center">
+            <h2 class="text-5xl font-bold">Services</h2>
+            <div class="flex space-x-6 mt-6">
+                <div class="bg-red-500 p-6 rounded-lg shadow-lg text-center w-1/2">
+                    <img src="web.jpg" class="w-full h-40 object-cover rounded">
+                    <h3 class="text-2xl font-semibold mt-4">Web Development</h3>
+                    <p class="mt-2">Making websites quickly as desired by users.</p>
+                </div>
+                <div class="bg-red-500 p-6 rounded-lg shadow-lg text-center w-1/2">
+                    <img src="ui.jpg" class="w-full h-40 object-cover rounded">
+                    <h3 class="text-2xl font-semibold mt-4">UI/UX Design</h3>
+                    <p class="mt-2">Designing webpages with slideshows, animations, etc.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="bg-gray-800 text-white p-10">
+        <div class="max-w-4xl mx-auto grid grid-cols-2 gap-10">
+            <div>
+                <h2 class="text-4xl font-bold">Contact</h2>
+                <p>Email: theofficialallanalmeida.com</p>
+                <p>Phone: 8369554180</p>
+            </div>
+            <div>
+                <h2 class="text-4xl font-bold">Lemme know!</h2>
+                <input type="text" placeholder="Your Name" class="w-full p-2 mt-2">
+                <input type="email" placeholder="Your Email" class="w-full p-2 mt-2">
+                <textarea placeholder="Your Feedback" class="w-full p-2 mt-2"></textarea>
+                <button class="bg-gray-600 text-white px-4 py-2 mt-2">Submit</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.to("#project-title", {
+            opacity: 0,
+            scrollTrigger: {
+                trigger: "#projects",
+                start: "top center",
+                end: "top top",
+                scrub: true
+            }
+        });
+
+        gsap.to("#slideshow", {
+            opacity: 1,
+            scrollTrigger: {
+                trigger: "#projects",
+                start: "top center",
+                end: "top top",
+                scrub: true
+            }
+        });
+
+        let index = 0;
+        function slideShow() {
+            index = (index + 1) % 4;
+            document.querySelector(".slides").style.transform = `translateX(-${index * 100}vw)`;
+        }
+        setInterval(slideShow, 2000);
+    </script>
+</body>
+</html>
